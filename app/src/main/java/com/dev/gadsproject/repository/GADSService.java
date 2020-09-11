@@ -2,11 +2,15 @@ package com.dev.gadsproject.repository;
 
 import com.dev.gadsproject.model.HoursItem;
 import com.dev.gadsproject.model.SkillIq;
+import com.google.gson.JsonObject;
 
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -17,6 +21,10 @@ public interface GADSService {
     @GET("api/hours")
     Call<List<HoursItem>> fetchHoursList();
 
-//    @GET("questions/survey/{id}")
-//    Call<QuestionResponse> fetchSurveyQuestionById(@Path("id") String id);
+    @POST("1FAIpQLSf9d1TcNU6zc6KR8bSEM41Z1g1zl35cwZr2xyjIhaMAz8WChQ/formResponse")
+    @FormUrlEncoded
+    Call<JsonObject> submitProject(@Field("entry.1824927963") String email,
+                                   @Field("entry.1877115667") String name,
+                                   @Field("entry.2006916086") String lastName,
+                                   @Field("entry.284483984") String githubLink);
 }
