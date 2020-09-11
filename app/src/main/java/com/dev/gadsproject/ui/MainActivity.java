@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), SubmitActivity.class);
                 startActivity(intent);
-                
+
             }
         });
         viewPager = (ViewPager) findViewById(R.id.view_pager);

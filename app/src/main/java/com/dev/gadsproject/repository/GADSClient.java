@@ -1,5 +1,8 @@
 package com.dev.gadsproject.repository;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -31,7 +34,9 @@ public class GADSClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
-
+    static Gson gson = new GsonBuilder()
+            .setLenient()
+            .create();
 
     public static Retrofit retrofitGoogle (){
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder().addInterceptor(new Interceptor() {
@@ -48,7 +53,7 @@ public class GADSClient {
 
                 .baseUrl(BASE_URL_GOOGLE)
                 .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
     }
 
